@@ -1,7 +1,6 @@
 local utils = require("editor.utils")
 local map = utils.map
 local nmap = utils.nmap
-local xmap = utils.xmap
 
 vim.g.mapleader = " "
 
