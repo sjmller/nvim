@@ -7,6 +7,7 @@ nvim.setup = function()
   for _, module_name in ipairs({
     "editor.options",
     "editor.keymaps",
+    "editor.autocmd",
   }) do
     local ok, err = pcall(require, module_name)
     if not ok then 
