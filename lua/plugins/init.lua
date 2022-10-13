@@ -10,6 +10,7 @@ local plugins = {
 -- load plugins from modules
 plugins.load = function()
   local modules = {
+    "colorscheme",
   }
 
   for _, mod in ipairs(modules) do

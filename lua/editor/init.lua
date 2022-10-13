@@ -1,8 +1,11 @@
 local nvim = {}
 
+nvim.config = {
+  theme = "nightfox",
+}
+
 -- The entry point of the whole configuration
 nvim.setup = function()
-
   -- load configuration from lua/editor/<module>
   for _, module_name in ipairs({
     "editor.options",
