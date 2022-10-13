@@ -1,14 +1,17 @@
 local colorscheme = {
-  -- nightfox colorscheme
+    -- nightfox colorscheme
     {
+      -- github repo
       "EdenEast/nightfox.nvim",
+      -- get configuration from config module
       cond = function()
-        -- must explicit call this module, or packer will compile it to a constant value
         return require("plugins.colorscheme.config").theme == "nightfox"
       end,
+      -- call setup from within config module
       config = function()
         require("plugins.colorscheme.config").nightfox_setup()
       end,
     },
 }
+
 return colorscheme
