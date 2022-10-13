@@ -6,11 +6,11 @@ local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvi
 local plugins = {
   repos = {},
 }
-
 -- load plugins from modules
 plugins.load = function()
   local modules = {
     "colorscheme",
+    "enhance",
   }
 
   for _, mod in ipairs(modules) do
@@ -90,7 +90,7 @@ plugins.init = function()
     return
   end
 
-  -- require("impatient")
+  require("impatient")
 
   init_packer()
   plugins.load()
