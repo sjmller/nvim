@@ -12,6 +12,7 @@ opt.background = "dark"
 opt.showcmd = true
 opt.cmdheight = 0
 opt.title = true
+vim.opt.ignorecase = true
 
 -- Replace tabs with appropriate number of spaces
 opt.expandtab = true
