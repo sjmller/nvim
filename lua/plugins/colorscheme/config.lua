@@ -10,6 +10,7 @@ end
 colorscheme_settings.nightfox_setup = function()
   require("nightfox").setup({
     options = {
+      transparent = true,
       styles = {
         comments = "italic",
         keywords = "bold",
