@@ -10,6 +10,7 @@ local plugins = {
 -- Load plugins with packer
 plugins.load = function()
   local modules = {
+    "coding",
     "enhance",
     "colorscheme",
     "completion",

@@ -2,7 +2,13 @@ local nvim = {}
 
 nvim.config = {
   theme = "nightfox",
+  treesitter_ft = {
+    lua = 1,
+    vim = 1,
+    fish = 1,
+  }
 }
+
 
 -- Initialize configuration
 nvim.setup = function()
