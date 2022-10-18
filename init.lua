@@ -1,1 +1,4 @@
-require("editor").setup()
+require('impatient')
+require("plugins")
+require("options")
+require("keymaps")

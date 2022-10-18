@@ -27,7 +27,7 @@ opt.scrolloff = 5 -- Minimal number of screen lines to keep above and below the 
 opt.autoindent = true
 
 opt.wrap = true -- Lines longer than current window width will wrap
-opt.breakindent = true  -- Every wrapped line will continue visually indented
+opt.breakindent = true -- Every wrapped line will continue visually indented
 
 opt.visualbell = true -- Use viusal bell instead of beeping
 

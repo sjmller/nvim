@@ -1,4 +1,6 @@
-local utils = require("editor.utils")
+local status, utils = pcall(require, "utils")
+if not status then return end
+
 local map = utils.map
 local nmap = utils.nmap
 
@@ -24,3 +26,11 @@ map("v", "<BS>", [["_d]], { noremap = false })
 
 -- deactivate highliting after search
 nmap("<ESC>", ":nohlsearch<CR>")
+
+-- nvim-tree
+nmap("<space>t", ":NvimTreeToggle<CR>")
+
+-- telescope
+nmap("<leader>f", function()
+  require("telescope.builtin").find_files(require("telescope.themes").get_dropdown())
+end)
