@@ -19,7 +19,16 @@ local repos = {
     "kyazdani42/nvim-web-devicons",
     module = "nvim-web-devicons",
   },
-
+  -- tree style file manager
+  {
+    "kyazdani42/nvim-tree.lua",
+    config = config.nvim_tree_config,
+    module = "nvim-tree",
+    cmd = {
+      "NvimTreeRefresh",
+      "NvimTreeToggle",
+    },
+  },
 }
 
 return repos

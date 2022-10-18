@@ -15,5 +15,6 @@ local function load(name)
 end
 
 config.telescope_config = load("telescope")
+config.nvim_tree_config = load("nvim-tree")
 
 return config
