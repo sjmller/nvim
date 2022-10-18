@@ -41,3 +41,6 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   pattern = '*',
   command = "set nopaste"
 })
+
+-- Avoid trailing whitespaces, aka remove ~ sign
+vim.opt.fcs = 'eob: '
