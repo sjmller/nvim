@@ -26,4 +26,5 @@ packer.startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
   use 'dstein64/vim-startuptime'
+  use 'glepnir/dashboard-nvim'
 end)
