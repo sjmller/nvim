@@ -6,9 +6,14 @@ nvim.config = {
     lua = 1,
     vim = 1,
     fish = 1,
-  }
+    python = 1,
+  },
+  lspconfig = {},
 }
 
+nvim.config.lspconfig['python'] = {
+  name = "pyright",
+}
 
 -- Initialize configuration
 nvim.setup = function()

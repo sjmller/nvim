@@ -5,7 +5,6 @@ local config = {}
 --
 config.treesitter_config = function()
   local ft = require("plugins.coding.config").treesitter_ft
-
   require("nvim-treesitter.configs").setup({
     -- packer compile is compiled without runtime context, so here we must give it
     -- the full path to the treesitter ft function for evaluating the filetype
@@ -65,5 +64,25 @@ end
 
 config.treesitter_ft = treesitter_ft()
 
+--
+-- lspconfig
+--
+config.lspconfig_config = function()
+  require("plugins.coding.config.lspconfig")
+end
+
+-- Generate lspconfig load filetype from langs table
+local function lspconfig_ft()
+  local filetype = {
+  }
+
+  for ft, _ in pairs(require("editor").config.lspconfig) do
+    table.insert(filetype, ft)
+  end
+
+  return filetype
+end
+
+config.lspconfig_ft = lspconfig_ft()
 
 return config
