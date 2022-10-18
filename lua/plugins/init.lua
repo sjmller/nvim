@@ -12,6 +12,7 @@ plugins.load = function()
   local modules = {
     "enhance",
     "colorscheme",
+    "completion",
   }
 
   for _, mod in ipairs(modules) do
