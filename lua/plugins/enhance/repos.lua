@@ -14,6 +14,12 @@ local repos = {
     config = config.telescope_config,
     module = "telescope",
   },
+  -- list of nerdfont icons
+  {
+    "kyazdani42/nvim-web-devicons",
+    module = "nvim-web-devicons",
+  },
+
 }
 
 return repos
