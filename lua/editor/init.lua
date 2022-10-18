@@ -4,14 +4,15 @@ nvim.config = {
   theme = "nightfox",
 }
 
--- The entry point of the whole configuration
+-- Initialize configuration
 nvim.setup = function()
-  -- load configuration from lua/editor/<module>
+  -- load each editor module
   for _, module_name in ipairs({
     "editor.options",
     "editor.keymaps",
     "editor.autocmd",
   }) do
+    -- check if module available
     local ok, err = pcall(require, module_name)
     if not ok then
       local msg = "calling module: " .. module_name .. " fail: " .. err

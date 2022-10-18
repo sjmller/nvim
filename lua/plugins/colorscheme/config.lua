@@ -1,8 +1,8 @@
 local colorscheme_settings = {
+  -- use theme defined in editor init definition
   theme = require("editor").config.theme,
 }
 
--- Apply selected color scheme
 local function apply()
   vim.cmd("colorscheme " .. colorscheme_settings.theme)
 end

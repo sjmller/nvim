@@ -2,16 +2,12 @@ local utils = require("editor.utils")
 local map = utils.map
 local nmap = utils.nmap
 
+-- define leader key
 vim.g.mapleader = " "
 
 -- move block easily
 nmap("<", "<<")
 nmap(">", ">>")
-
--- create tab like window
-nmap("<C-T>h", ":tabprevious<CR>")
-nmap("<C-T>l", ":tabnext<CR>")
-nmap("<C-T>n", ":tabnew<CR>")
 
 -- save quickly
 nmap("<space>w", ":w<CR>")

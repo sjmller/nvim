@@ -7,7 +7,7 @@ local plugins = {
   repos = {},
 }
 
--- load plugins from modules
+-- Load plugins with packer
 plugins.load = function()
   local modules = {
     "enhance",
@@ -15,17 +15,20 @@ plugins.load = function()
     "completion",
   }
 
+  -- load all plugin modules
   for _, mod in ipairs(modules) do
     require("plugins." .. mod)
   end
 
+  -- initilalize plugins with packer
   require("packer").startup(function(use)
-    -- Packer can manage itself
     use({
       "wbthomason/packer.nvim",
       event = "VimEnter",
     })
 
+    -- use repositories define within each 
+    -- modules repos.lua file
     for _, repo in ipairs(plugins.repos) do
       use(repo)
     end
@@ -33,12 +36,12 @@ plugins.load = function()
   end)
 end
 
--- has_packer return the packer install status
+-- Check if packer is available
 local function has_packer()
   return uv.fs_stat(install_path) ~= nil
 end
 
--- install_packer will use git to install packer to the install_path
+-- Install packer using git clone
 local function install_packer()
   utils.infoL("Installing packer to " .. install_path)
   vim.fn.system({
@@ -51,7 +54,7 @@ local function install_packer()
   })
 end
 
--- init_packer will setup the packer style
+-- Initialize packer
 local function init_packer()
   vim.cmd("packadd packer.nvim")
 
@@ -75,44 +78,46 @@ local function init_packer()
   })
 end
 
-local function bootstrap()
+-- First time installation
+local function boot()
   install_packer()
   vim.cmd("packadd packer.nvim")
   plugins.load()
-  -- notify user to quit neovim when bootstrap process done
+  -- notify user to quit neovim when boot process is done
   vim.cmd(
     "au User PackerComplete echom 'Plugins are installed successfully, please use :qa to exit and restart the neovim'"
   )
   require("packer").sync()
 end
 
--- init plugins
+-- Initialize plugins
 plugins.init = function()
+  -- check if packer is available, otherwise install
   if not has_packer() then
-    bootstrap()
+    boot()
     return
   end
 
-  local impatient_status, impatient = pcall(require, "impatient")
-  -- if status then require("impatient") end
-  -- require("impatient")
+  -- cache everything to speed uptime start process
+  require("impatient")
 
   init_packer()
   plugins.load()
 end
 
--- register plugins
+-- Register plugins
 plugins.register = function(plug)
   vim.list_extend(plugins.repos, plug)
 end
 
 local au = vim.api.nvim_create_autocmd
--- auto compile when editing the load.lua file
+-- Auto compile in case a init definition within a config module
+-- was changed.
 au({ "BufWritePost" }, {
   pattern = { "config.lua", "init.lua" },
   callback = function()
     local full_path = vim.fn.expand("%:p")
-    -- if the load.lua file is not inside our configuration directory
+    -- if the init.lua file is not inside our configuration directory
     -- abort the operation
     if not full_path:match(vim.fn.stdpath("config")) then
       return

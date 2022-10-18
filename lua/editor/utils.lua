@@ -1,3 +1,5 @@
+-- source: https://github.com/Avimitin
+
 local M = {}
 
 -- errorL notify a message in error level
