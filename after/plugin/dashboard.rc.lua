@@ -24,7 +24,7 @@ db.custom_center = {
   {
     icon = "﴾  ",
     desc = "Update Plugin         ",
-    action = "PackerCompile",
+    action = "PackerSync",
   },
   {
     icon = "  ",
