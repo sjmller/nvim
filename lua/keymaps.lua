@@ -1,38 +1,35 @@
-local status, utils = pcall(require, "utils")
-if not status then return end
-
-local map = utils.map
-local nmap = utils.nmap
+local builtin = require('telescope.builtin')
+local map = vim.keymap
 
 -- define leader key
 vim.g.mapleader = " "
 
 -- move block easily
-nmap("<", "<<")
-nmap(">", ">>")
+map.set("n", "<", "<<")
+map.set("n", ">", ">>")
 
 -- save quickly
-nmap("<space>w", "<cmd>w<cr>")
+map.set("n", "<space>w", "<cmd>w<cr>")
 
 -- move around the window
-nmap("<space>k", "<C-w>k")
-nmap("<space>j", "<C-w>j")
-nmap("<space>l", "<C-w>l")
-nmap("<space>h", "<C-w>h")
+map.set("n", "<space>k", "<C-w>k")
+map.set("n", "<space>j", "<C-w>j")
+map.set("n", "<space>l", "<C-w>l")
+map.set("n", "<space>h", "<C-w>h")
 
 -- backspace to delete without yank
-map("n", "<BS>", [["_X]], { noremap = false })
-map("v", "<BS>", [["_d]], { noremap = false })
+map.set("n", "<BS>", [["_X]], { noremap = false })
+map.set("v", "<BS>", [["_d]], { noremap = false })
 
 -- deactivate highliting after search
-nmap("<ESC>", "<cmd>nohlsearch<cr>")
+map.set('n', "<ESC>", "<cmd>nohlsearch<cr>", {})
 
 -- nvim-tree
-nmap("<space>t", ":NvimTreeToggle<cr>")
+map.set('n', 't', "<cmd>NvimTreeToggle<cr>", {})
 
 -- telescope
-nmap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
-nmap("<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
-nmap("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
-nmap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
-nmap("<leader>fo", "<cmd>Telescope oldfiles<cr>")
+map.set('n', '<leader>ff', builtin.find_files, {})
+map.set('n', '<leader>fg', builtin.live_grep, {})
+map.set('n', '<leader>fb', builtin.buffers, {})
+map.set('n', '<leader>fh', builtin.help_tags, {})
+map.set('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>', {})
