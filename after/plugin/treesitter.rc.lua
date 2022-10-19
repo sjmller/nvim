@@ -14,6 +14,7 @@ ts.setup {
     "python",
     "lua",
     "fish",
+    "latex",
   },
   autotag = {
     enable = true,

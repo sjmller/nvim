@@ -27,4 +27,5 @@ packer.startup(function(use)
   use 'glepnir/lspsaga.nvim'
   use 'dstein64/vim-startuptime'
   use 'glepnir/dashboard-nvim'
+  use "williamboman/mason.nvim"
 end)

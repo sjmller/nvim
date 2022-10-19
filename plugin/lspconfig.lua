@@ -68,6 +68,10 @@ local capabilities = vim.tbl_deep_extend(
   require('cmp_nvim_lsp').default_capabilities()
 )
 
+-- latex lsp
+nvim_lsp.texlab.setup {}
+
+-- python lsp
 nvim_lsp.pyright.setup {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
@@ -76,6 +80,7 @@ nvim_lsp.pyright.setup {
   end
 }
 
+-- lua lsp
 nvim_lsp.sumneko_lua.setup {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
