@@ -11,12 +11,9 @@ ts.setup {
     disable = {},
   },
   ensure_installed = {
-    "python",
     "lua",
     "fish",
     "latex",
-  },
-  autotag = {
-    enable = true,
+    "python",
   },
 }

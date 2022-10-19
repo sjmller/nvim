@@ -19,7 +19,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 
-return require('packer').startup(function(use)
+return require('packer').startup({ function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -45,4 +45,11 @@ return require('packer').startup(function(use)
   if packer_bootstrap then -- sync in case packer was not installed yet
     require('packer').sync()
   end
-end)
+end,
+  config = {
+    display = {
+      open_fn = function()
+        return require("packer.util").float({ border = "single" })
+      end
+    }
+  } })
