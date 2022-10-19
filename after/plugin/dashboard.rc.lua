@@ -1,4 +1,6 @@
-local db = require("dashboard")
+local status, db = pcall(require, "dashboard")
+if not status then return end
+
 db.custom_header = {
   [[      ___                                    ___     ]],
   [[     /__/\          ___        ___          /__/\    ]],

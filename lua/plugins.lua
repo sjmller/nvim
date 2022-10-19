@@ -1,13 +1,25 @@
-local status, packer = pcall(require, "packer")
-if (not status) then
-  print("Packer is not installed")
-  return
+-- Ensure packer is installed
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+local ensure_packer = function()
+  if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    vim.fn.system({
+      'git',
+      'clone',
+      '--depth',
+      '1',
+      'https://github.com/wbthomason/packer.nvim',
+      install_path
+    })
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  else
+    return false
+  end
 end
 
-vim.cmd [[packadd packer.nvim]]
+local packer_bootstrap = ensure_packer()
 
-packer.startup(function(use)
-  use "lewis6991/impatient.nvim"
+return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -22,10 +34,16 @@ packer.startup(function(use)
   use "hrsh7th/cmp-vsnip"
   use "hrsh7th/vim-vsnip"
   use "hrsh7th/cmp-cmdline"
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  }
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
   use 'dstein64/vim-startuptime'
   use 'glepnir/dashboard-nvim'
   use "williamboman/mason.nvim"
+  if packer_bootstrap then -- sync in case packer was not installed yet
+    require('packer').sync()
+  end
 end)

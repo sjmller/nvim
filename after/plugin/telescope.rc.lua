@@ -1,8 +1,5 @@
 local ok, telescope = pcall(require, "telescope")
-if not ok then
-  print('telescope not found')
-  return
-end
+if not ok then return end
 
 telescope.setup({
   defaults = {

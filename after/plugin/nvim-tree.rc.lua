@@ -1,12 +1,8 @@
-local ok, tree_c = pcall(require, "nvim-tree.config")
-if not ok then
-  print('error')
-  vim.notify(tree_c, vim.log.levels.ERROR)
-  return
-end
+local ok, tree = pcall(require, "nvim-tree")
+if not ok then return end
 
 -- following options are the default
-require("nvim-tree").setup({
+tree.setup({
   disable_netrw = true,
   hijack_netrw = true,
   open_on_setup = false,
