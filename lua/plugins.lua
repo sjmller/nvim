@@ -70,11 +70,13 @@ return require('packer').startup({
             config = "require('config.lspsaga-config')",
             after = "nvim-lspconfig"
         }
+
+        -- automatic server instalation
         use {
             "williamboman/mason.nvim",
             config = "require('config.mason-config')",
             after = "nvim-lspconfig"
-        } -- automatic server instalation
+        }
 
         -- completion
         use {

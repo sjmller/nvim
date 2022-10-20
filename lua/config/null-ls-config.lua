@@ -15,7 +15,9 @@ null_ls.setup {
         null_ls.builtins.formatting.lua_format,
         null_ls.builtins.diagnostics.fish,
         null_ls.builtins.formatting.fish_indent,
-        null_ls.builtins.formatting.yapf
+        null_ls.builtins.formatting.yapf,
+        null_ls.builtins.formatting.latexindent,
+        null_ls.builtins.diagnostics.chktex
     },
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
