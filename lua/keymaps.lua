@@ -1,4 +1,6 @@
-local builtin = require('telescope.builtin')
+local status, builtin = pcall(require,'telescope.builtin')
+if not status then return end
+
 local map = vim.keymap
 
 -- define leader key
