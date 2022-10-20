@@ -21,28 +21,44 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup({ function(use)
   use 'wbthomason/packer.nvim'
+
+  -- look and feel
+  use 'EdenEast/nightfox.nvim'
+  use 'glepnir/dashboard-nvim'
+  use "kyazdani42/nvim-web-devicons"
+  use "onsails/lspkind.nvim"
+
+  -- common utils
+  use 'nvim-lua/plenary.nvim'
+  use 'dstein64/vim-startuptime'
+
+  -- file organization and fuzzy finding
+  use 'nvim-tree/nvim-tree.lua'
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x' }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use 'nvim-lua/plenary.nvim'
-  use "kyazdani42/nvim-web-devicons"
-  use 'nvim-tree/nvim-tree.lua'
-  use 'EdenEast/nightfox.nvim'
-  use "rafamadriz/friendly-snippets"
-  use "hrsh7th/nvim-cmp"
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-vsnip"
-  use "hrsh7th/vim-vsnip"
-  use "hrsh7th/cmp-cmdline"
+
+  -- syntax highlighting, indenting, etc.
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    run = function() require(
+        'nvim-treesitter.install').update({ with_sync = true })
+    end,
   }
+
+  -- lsp functionality
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
-  use 'dstein64/vim-startuptime'
-  use 'glepnir/dashboard-nvim'
-  use "williamboman/mason.nvim"
+  use "williamboman/mason.nvim" -- automatic server instalation
+
+  -- completion
+  use "hrsh7th/cmp-nvim-lsp"
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'rafamadriz/friendly-snippets'
+  use "hrsh7th/nvim-cmp"
+  use "L3MON4D3/LuaSnip"
+  use 'saadparwaiz1/cmp_luasnip'
+
   if packer_bootstrap then -- sync in case packer was not installed yet
     require('packer').sync()
   end
