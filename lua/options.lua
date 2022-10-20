@@ -35,7 +35,5 @@ opt.foldlevel = 99 -- always start with open folds
 opt.foldenable = true
 
 -- Turn off paste mode when leaving insert
-vim.api.nvim_create_autocmd("InsertLeave", {
-  pattern = '*',
-  command = "set nopaste"
-})
+vim.api.nvim_create_autocmd("InsertLeave",
+                            {pattern = '*', command = "set nopaste"})

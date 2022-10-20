@@ -17,8 +17,8 @@ map.set("n", "<space>l", "<C-w>l")
 map.set("n", "<space>h", "<C-w>h")
 
 -- backspace to delete without yank
-map.set("n", "<BS>", [["_X]], { noremap = false })
-map.set("v", "<BS>", [["_d]], { noremap = false })
+map.set("n", "<BS>", [["_X]], {noremap = false})
+map.set("v", "<BS>", [["_d]], {noremap = false})
 
 -- deactivate highliting after search
 map.set('n', "<ESC>", "<cmd>nohlsearch<cr>", {})
