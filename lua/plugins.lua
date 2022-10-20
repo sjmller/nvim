@@ -22,6 +22,9 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup({ function(use)
   use 'wbthomason/packer.nvim'
 
+  -- cache everything to speed up startup
+  use 'lewis6991/impatient.nvim'
+
   -- look and feel
   use 'EdenEast/nightfox.nvim'
   use 'glepnir/dashboard-nvim'
