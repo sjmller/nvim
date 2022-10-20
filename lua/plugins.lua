@@ -20,14 +20,11 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup({ function(use)
-  use 'wbthomason/packer.nvim'
-
-  -- cache everything to speed up startup
-  use 'lewis6991/impatient.nvim'
+  use {'wbthomason/packer.nvim', config=""}
 
   -- look and feel
-  use 'EdenEast/nightfox.nvim'
-  use 'glepnir/dashboard-nvim'
+  use {'EdenEast/nightfox.nvim', config="require('config.nightfox-config')"}
+  use {'glepnir/dashboard-nvim', config="require('config.dashboard-config')"}
   use "kyazdani42/nvim-web-devicons"
   use "onsails/lspkind.nvim"
 
@@ -36,9 +33,9 @@ return require('packer').startup({ function(use)
   use 'dstein64/vim-startuptime'
 
   -- file organization and fuzzy finding
-  use 'nvim-tree/nvim-tree.lua'
-  use { 'nvim-telescope/telescope.nvim', branch = '0.1.x' }
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {'nvim-tree/nvim-tree.lua', cmd="NvimTreeToggle", config="require('config.nvim-tree-config')"}
+  use { 'nvim-telescope/telescope.nvim', branch = '0.1.x' , config="require('config.telescope-config')"}
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 
   -- syntax highlighting, indenting, etc.
   use {
@@ -46,21 +43,23 @@ return require('packer').startup({ function(use)
     run = function() require(
         'nvim-treesitter.install').update({ with_sync = true })
     end,
+    event="BufWinEnter",
+    config="require('config.treesitter-config')"
   }
 
   -- lsp functionality
-  use 'neovim/nvim-lspconfig'
-  use 'glepnir/lspsaga.nvim'
-  use "williamboman/mason.nvim" -- automatic server instalation
+  use {'neovim/nvim-lspconfig', config="require('config.lspconfig-config')", after="cmp-nvim-lsp"}
+  use {'glepnir/lspsaga.nvim', config="require('config.lspsaga-config')", after="nvim-lspconfig"}
+  use {"williamboman/mason.nvim", config="require('config.mason-config')", after="nvim-lspconfig"} -- automatic server instalation
 
   -- completion
-  use "hrsh7th/cmp-nvim-lsp"
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
+  use {"hrsh7th/nvim-cmp", config="require('config.cmp-config')", event="InsertEnter"}
+  use {"hrsh7th/cmp-nvim-lsp", after="nvim-cmp"}
+  use {'hrsh7th/cmp-buffer', after="nvim-cmp"}
+  use {'hrsh7th/cmp-path', after="nvim-cmp"}
   use 'rafamadriz/friendly-snippets'
-  use "hrsh7th/nvim-cmp"
-  use "L3MON4D3/LuaSnip"
-  use 'saadparwaiz1/cmp_luasnip'
+  use {"L3MON4D3/LuaSnip", config="require('config.luasnip-config')", after="nvim-cmp"}
+  use {'saadparwaiz1/cmp_luasnip', after="nvim-cmp"}
 
   if packer_bootstrap then -- sync in case packer was not installed yet
     require('packer').sync()

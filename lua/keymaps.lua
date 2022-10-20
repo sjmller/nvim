@@ -1,6 +1,3 @@
-local status, builtin = pcall(require,'telescope.builtin')
-if not status then return end
-
 local map = vim.keymap
 
 -- define leader key
@@ -27,11 +24,4 @@ map.set("v", "<BS>", [["_d]], { noremap = false })
 map.set('n', "<ESC>", "<cmd>nohlsearch<cr>", {})
 
 -- nvim-tree
-map.set('n', 't', "<cmd>NvimTreeToggle<cr>", {})
-
--- telescope
-map.set('n', '<leader>ff', builtin.find_files, {})
-map.set('n', '<leader>fg', builtin.live_grep, {})
-map.set('n', '<leader>fb', builtin.buffers, {})
-map.set('n', '<leader>fh', builtin.help_tags, {})
-map.set('n', '<leader>fo', builtin.oldfiles, {})
+map.set('n', '<leader>t', "<cmd>NvimTreeToggle<cr>", {})
